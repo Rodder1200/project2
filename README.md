@@ -1,6 +1,6 @@
-# First full project
+# Second project
 
-## Technologies used: Gulp, SCSS, Pug, JS, PerfectPixel, Adobe Photoshop. 
+## Technologies used: Vue.js, Gulp, SCSS, Pug. 
 
-### No JQuery, no frameworks. Responsive design (tested for: min 320px, max 1920px). Used random [template](https://github.com/Rodder1200/project1/blob/master/template.jpg).
+### Hosted here: https://rodder1200.github.io/project2/
 
