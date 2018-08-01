@@ -1,0 +1,68 @@
+doctype html
+html(lang="en")
+	head
+		title Project2
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport" content="width=device-width")
+		meta(name="description" content="Pizza")
+		meta(name="author" content="Roman Goncharuk")
+		link(rel="stylesheet" href="css/main.min.css")
+		script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
+		script(defer src="js/main.min.js")
+	body
+		header.header
+			h1 Pizza-constructor
+		section#app.main
+			aside.pizzaType
+					ul.size Pizza size
+						li
+							input(id="small" type="radio" name="size" v-bind:value="4" v-model="priceForSize")
+							label(for="small") small
+						li
+							input(id="medium" type="radio" name="size" v-bind:value="5" v-model="priceForSize")
+							label(for="medium") medium
+						li
+							input(id="large" type="radio" name="size" v-bind:value="6" v-model="priceForSize")
+							label(for="large") large
+						.error {{ errors.size }}
+					ul Popping
+						li
+							input(id="bacon" type="checkbox" name="bacon" v-model="poppingTypes.bacon.show" )
+							label(for="bacon") bacon
+						li
+							input(id="paperoni" type="checkbox" name="paperoni" v-model="poppingTypes.paperoni.show")
+							label(for="paperoni") paperonni
+						li
+							input(id="salami" type="checkbox" name="salami" v-model="poppingTypes.salami.show")
+							label(for="salami") salami
+						li
+							input(id="sausages" type="checkbox" name="sausages" v-model="poppingTypes.sausages.show")
+							label(for="sausages") sausages
+						li
+							input(id="turkey" type="checkbox" name="turkey" v-model="poppingTypes.turkey.show")
+							label(for="turkey") turkey
+			section.mainImg
+				img(src="./images/bacon.png" alt="bacon" v-show="poppingTypes.bacon.show")
+				img(src="./images/paperoni.png", alt="paperoni" v-show="poppingTypes.paperoni.show")
+				img(src="./images/salami.png", alt="salami" v-show="poppingTypes.salami.show")
+				img(src="./images/sausages.png", alt="sausages" v-show="poppingTypes.sausages.show")
+				img(src="./images/turkey.png", alt="turkey" v-show="poppingTypes.turkey.show")
+			aside.contacts
+				form(action="javascript:void(0);" method="post" @submit="checkForm")
+					.contacts
+						input(type="text" placeholder="Enter your name" v-model="name" v-on:blur="checkName")
+						.error {{ errors.name }}
+						input(type="tel" placeholder="Enter your phone number" title="example: 0996665544" v-model="tel" v-on:blur="checkTel")
+						.error {{ errors.tel }}
+						input(type="text" placeholder="Enter your address" v-model="address" v-on:blur="checkAddress")
+						.error {{ errors.address }}
+					.totalPrice Total price: #[span {{totalPrice}}] $
+					button(type="submit") Order
+			.modal-wrapper
+				.modal 
+					.head
+						a(class="btn-close" href="javascript:;" v-on:click="onClose")
+					.content Your order was successfully processed
+
+		
